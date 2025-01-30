@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: antiquewhite;
+    justify-items: center;
+    align-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#atzekoPlanoa{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+header{
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    justify-content: space-around;
+    justify-items: right;
+    align-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+header img{
+    width: auto;
+    height: 10vh;
+}
+
+/*Animazioa*/
+@-webkit-keyframes scale-down-center {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes scale-down-center {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    100% {
+      -webkit-transform: scale(0.9);
+              transform: scale(0.9);
+    }
+  }
+
+header nav{
+    padding: 1em;
+    width: 60vw;
+    justify-content: right;
+}
+
+header nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav ul li{
+    text-align: center;
+    border-radius: 10px;
+    border-style: hidden;
+    background-color: rgb(255, 228, 196, 0.7);
+    border-width: 1px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+header nav ul li a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+header nav ul li:hover{
+    -webkit-animation: scale-down-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-down-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+header #hasiSaioa button{
+    border-radius: 10px;
+    background-color: rgb(255, 228, 196, 0.7);
+    border-color: #A1E6C2;
+    box-shadow: 0px 2px 10px #A1E6C2;
+}
+
+header #hasiSaioa:hover{
+    -webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+header #itxiSaioa button{
+    border-radius: 10px;
+    background-color: rgb(255, 228, 196, 0.7);
+    border-color: #e6a1b7;
+    box-shadow: 0px 2px 10px #e6a1b7;
+}
+
+header #itxiSaioa:hover{
+    -webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+footer{
+    width: 100vw;
+    min-height: 10vh;
+    padding: 1%;
+    display: flex;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    justify-content: space-evenly;
+    justify-items: right;
+    align-items: center;
+    box-shadow: -2px -2px 0px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+footer span{
+    font-weight: bold;
+}
+
+footer #sareak{
+    min-height: 10vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+footer #lerroa{
+    display: flex;
+    justify-content: space-around;
+}
+
+footer img{
+    width: 30px;
+    height: auto;
+    border-radius: 5px;
+}

@@ -1,0 +1,72 @@
+main{
+    width: 100vw;
+    height: 80vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    flex: 1;
+    justify-items: center;
+    align-content: center;
+}
+
+#edukia{
+    position: relative;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+
+#edukia span{
+    font-weight: bold;
+}
+
+#helmugak{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#helmugak p{
+    width: 70%;
+}
+
+#edukia #helmugak img{
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+#edukia #zerbitzuak{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#edukia #zerbitzuak p{
+    text-align: center;
+    padding: 10px;
+    width: 15%;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: rgb(255, 228, 196, 0.9);
+    border-color: #91726F;
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+#iritziak div{
+    display: flex;
+    align-items: center;    
+}
+
+#iritziak div img{
+    height: 100px;
+    width: auto;
+    border-radius: 10px;
+}
