@@ -5,7 +5,7 @@ require 'conexioa.php';
 $nombre = htmlspecialchars(trim($_POST['erabiltzailea']));
 $pasahitza = htmlspecialchars(trim($_POST['pasahitza']));
 
-$sql = "SELECT Erabiltzailea, Pasahitza, Desk, Logoa FROM agentzia WHERE Erabiltzailea = ?";
+$sql = "SELECT Erabiltzailea, Pasahitza, Desk, Logoa FROM agentzia WHERE Erabiltzailea = '$nombre' and Pasahitza='$pasahitza'";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $nombre);
 $stmt->execute();
