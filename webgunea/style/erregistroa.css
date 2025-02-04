@@ -1,0 +1,33 @@
+#taula{
+    color: rgb(95, 67, 34);
+ display:none;
+ border-radius: 10px;
+ border:2px rgb(95, 67, 34) solid;
+ margin: 20px;
+}
+
+#taula tr{
+    border: 2px rgb(231, 179, 115) solid;
+    padding: 50vw;
+}
+#taula th{
+    color: white;
+    text-transform: uppercase;
+    background-color:rgb(95, 67, 34);
+    margin: 50%;
+}
+
+#bueltatu{
+    width: 20%;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    background-color: rgb(255, 228, 196, 0.9);
+    border-style: hidden;
+    border-radius: 10px;
+    display: none;
+}
+
+#aldakorra, #subAldakorra{
+    display: none;
+}
