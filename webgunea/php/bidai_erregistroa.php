@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bidai Erregistroa</title>
     <link rel="icon" type="image/png" href="img/bilboviajes.png">
-    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="style/maketazioa.css">
     <script defer src="javaScript/bola.js"></script>
     <script defer src="javaScript/atzekoPlanoa.js"></script>
