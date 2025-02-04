@@ -31,7 +31,7 @@ session_start();
                     <li><a href="#">Helmugak</a></li>
                     <li><a href="bidai_erregistroa.php">Bidaiak erregistratu</a></li>
                     <li><a href="#">Zerbitzuak erregistratu</a></li>
-                    <li id="itxiSaioa"><a href="index.html" class="btn">Itxi saioa</a></li>
+                    <li id="itxiSaioa"><a href="../index.html" class="btn">Itxi saioa</a></li>
                 </ul>
             </nav>
         </header>

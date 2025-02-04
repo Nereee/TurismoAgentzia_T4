@@ -12,8 +12,11 @@ session_start();
     <link rel="icon" type="image/png" href="img/bilboviajes.png">
     <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="../style/maketazioa.css">
-    <script defer src="javaScript/bola.js"></script>
-    <script defer src="javaScript/atzekoPlanoa.js"></script>
+    <link rel="stylesheet" href="../style/erregistroa.css">
+    <script defer src="../javaScript/bola.js"></script>
+    <script defer src="../javaScript/atzekoPlanoa.js"></script>
+    <script defer src="../javaScript/balidatu.js"></script>
+    <script defer src="../javaScript/bidai_erregistroa.js"></script>
 </head>
 <body>
     <div id="container">
@@ -26,50 +29,80 @@ session_start();
                     <li><a href="">Agentziak</a></li>
                     <li><a href="../aboutus.html">Nortzuk gara?</a></li>
                     <li><a href="">Helmugak</a></li>
-                    <li><a href="../bidai_erregistroa.html">Bidaiak erregistratu</a></li>
-                    <li><a href="">Zerbitzuak erregistratu</a></li>
-                    <li id="itxiSaioa"><button><a href="index.html">Itxi saioa</a></button></li>
+                    <li><a href="#">Bidaiak erregistratu</a></li>
+                    <li><a href="zerbitzu_erregistroa.php">Zerbitzuak erregistratu</a></li>
+                    <li id="itxiSaioa"><button><a href="../index.html">Itxi saioa</a></button></li>
                 </ul> 
             </nav>
         </header>
         <main>
-            <form action="#">
+        <form action="#" method="post">
                 <label for="izena" id="textua">Izena:</label><br>
-                <input type="text" name="izena" id="izena">
+                <input type="text" name="izena" id="izena" required>
                 <br><br>
                 <label for="bidaiaMota" id="textua">Bidaia Mota</label><br>
-                <select name="bidaiaMota" id="bidaiaMota">
+                <select name="bidaiaMota" id="bidaiaMota" required>
                     <option value="">--Aukeratu--</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                    <?php
+                //DATU BASETIK
+                $sql = "select Bidai_mota_kod, Desk from Bidai_mota"; 
+                $result = $conn->query($sql);//exekutatu
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['Bidai_mota_kod'] . "'>" . $row['Desk'] . "</option>";
+                    }
+                }
+                ?>
                 </select>
                 <br><br>
                 <label for="hasieraData">Hasiera Data:</label><br>
-                <input type="date" id="hasieraData">
+                <input type="date" id="hasieraData" onclick=gaurkoData() required>
                 <br><br>
                 <label for="amaieraData">Amaiera Data:</label><br>
-                <input type="date" id="amaieraData">
+                <input type="date" id="amaieraData" required onclick=gaurkoData() onblur=egunaKalkulatu()>
                 <br><br>
                 <label for="egunak">Egunak:</label><br>
-                <input type="number" id="egunak">
+                <input type="number" id="egunak" readonly>
                 <br><br>
                 <label for="herrialdea">Herrialdea:</label><br>
-                <select name="herrialdea" id="herrialdea">
-                    <option value="">--Aukeratu--</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                <select name="herrialdea" id="herrialdea" required>
+                <option value="">--Aukeratu--</option>
+                    <?php
+                //DATU BASETIK
+                $sql = "select herrialde_kod, izena from Herrialdea"; 
+                $result = $conn->query($sql);//exekutatu
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['herrialde_kod'] . "'>" . $row['izena'] . "</option>";
+                    }
+                }
+                ?>
                 </select>
                 <br><br>
                 <label for="deskribapena">Deskribapena:</label><br>
-                <textarea name="deskribapena" id="deskribapena"></textarea>
+                <textarea name="deskribapena" id="deskribapena" required></textarea>
                 <br><br>
                 <label for="kanpokoZerbitzuak">Kanpoan geratzen diren zerbitzuak:</label><br>
-                <textarea name="kanpokoZerbitzuak" id="kanpokoZerbitzuak"></textarea>
+                <textarea name="kanpokoZerbitzuak" id="kanpokoZerbitzuak" required></textarea>
                 <br><br>
-                <input type="submit" name="gorde" id="gorde" value="Gorde">
+                <input type="button" id="gorde" onclick="erakutsiTaula()" onclick="bidaibal()" value="Gorde">
+
             </form>
+            <table id="taula"  >
+            <thead> 
+                <tr>
+                    <th>Bidaia</th>
+                    <th>Bidai mota</th>
+                    <th>Hasiera data</th>
+                    <th>Amaiera data</th>
+                    <th>Egunak</th>
+                    <th>Herrialdea</th>
+                    <th>Deskripzioa</th>
+                </tr>
+            </thead>
+                <tbody></tbody>
+            </table>
+            <input type="button" id="bueltatu" onclick="bueltatu()" value="Bueltatu">
         </main>
         <footer>
             <div id="iformazioa">
@@ -100,5 +133,7 @@ session_start();
             </div>
         </footer>
     </div>
+    <?php $conn->close(); ?>
+        
 </body>
 </html>

@@ -1,16 +1,6 @@
 <?php
 require 'conexioa.php';
 session_start();
-
-if (!isset($_SESSION['erabiltzailea'])) {
-    echo "<script>
-        alert('Saioa hasi behar duzu.');
-        window.location.href = '../login.html';
-    </script>";
-    exit();
-}
-
-$izena = htmlspecialchars($_SESSION['erabiltzailea']); // Recuperar desde sesión
 ?>
 
 <!DOCTYPE html>
@@ -43,13 +33,18 @@ $izena = htmlspecialchars($_SESSION['erabiltzailea']); // Recuperar desde sesió
         </header>
         <main>
         <?php
-        ?> <p id="mezua"> Kaixo <?php echo $izena; 
-    ?> ,aukeratu erregistro mota </p>
+        ?> 
+            <p id="mezua"> Kaixo 
+                <?php
+                    if(isset($_SESSION['erabiltzailea'])) {
+                    echo $_SESSION['erabiltzailea']; }
+                ?> 
+            ,aukeratu erregistro mota </p>
 
         <nav>
     <ul>
         <li><a href="bidai_erregistroa.php">Bidaiak erregistratu</a></li>
-        <li><a href="../zerbitzu_erregistroa.html">Zerbitzuak erregistratu</a></li>
+        <li><a href="zerbitzu_erregistroa.php">Zerbitzuak erregistratu</a></li>
     </ul>
 </nav>
 
