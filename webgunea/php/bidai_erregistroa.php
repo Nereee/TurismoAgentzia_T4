@@ -85,7 +85,7 @@ session_start();
                 <label for="kanpokoZerbitzuak">Kanpoan geratzen diren zerbitzuak:</label><br>
                 <textarea name="kanpokoZerbitzuak" id="kanpokoZerbitzuak" required></textarea>
                 <br><br>
-                <input type="button" id="gorde" onclick="erakutsiTaula()" onclick="bidaibal()" value="Gorde">
+                <input type="button" id="gorde" onclick="bidaibal()" value="Gorde">
 
             </form>
             <table id="taula"  >

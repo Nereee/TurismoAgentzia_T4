@@ -12,10 +12,10 @@ session_start();
     <link rel="icon" type="img/png" href="../img/bilboviajes.png">
     <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="../style/maketazioa.css">
+    <link rel="stylesheet" href="../style/erregistroa.css">
     <script defer src="../javaScript/bola.js"></script>
     <script defer src="../javaScript/atzekoPlanoa.js"></script>
-    <script defer src="../javaScript/zerbitzuErregistroa.js"></script>
-    <script defer src="../javaScript/prueba.js"></script>
+    <!--<script defer src="../javaScript/zerbitzuErregistroa.js"></script>-->
 </head>
 
 <body>
@@ -31,7 +31,7 @@ session_start();
                     <li><a href="#">Helmugak</a></li>
                     <li><a href="bidai_erregistroa.php">Bidaiak erregistratu</a></li>
                     <li><a href="#">Zerbitzuak erregistratu</a></li>
-                    <li id="itxiSaioa"><a href="../index.html" class="btn">Itxi saioa</a></li>
+                    <li id="itxiSaioa"><button><a href="../index.html">Itxi saioa</a></button></li>
                 </ul>
             </nav>
         </header>
@@ -57,16 +57,16 @@ session_start();
                 <div class="zerbitzuMota">
                     <div>
                         <input type="radio" name="zerbitzuMota" value="hegaldia" id="hegaldia"> <label for="hegaldia"
-                        class="textua" onclick="formularioakIkusi('aldakorra')">Hegaldia</label>
+                        class="textua" onclick="formularioakIkusi('hegaldia', 'aldakorra')">Hegaldia</label>
 
                     </div>
                     <div>
                         <input type="radio" name="zerbitzuMota" value="ostatua" id="ostatua"> <label for="ostatua"
-                        class="textua" onclick="formularioakIkusi('ostatua')">Ostatua</label>
+                        class="textua" onclick="formularioakIkusi('ostatua', 'ostatu')">Ostatua</label>
                     </div>
                     <div>
                         <input type="radio" name="zerbitzuMota" value="besteBatzuk" id="besteBatzuk"> <label
-                            for="besteBatzuk" class="textua" onclick="formularioakIkusi('besteBatzuk')">Beste Batzuk</label>
+                            for="besteBatzuk" class="textua" onclick="formularioakIkusi('besteBatzuk', 'besteBatzu')">Beste Batzuk</label>
                     </div>
                 </div>
                 <div id="aldakorra">
@@ -74,14 +74,14 @@ session_start();
                         <label for="hegaldiMota">Zein hegaldia mota da?</label>
                         <div>
                             <input type="radio" name="hegaldiMota" value="joan" id="joan"> <label for="joan"
-                            class="textua" onclick="formularioakIkusi('joan')">Joan</label>
+                            class="textua" onclick="formularioakIkusi('joan', 'joana')">Joan</label>
                             <input type="radio" name="hegaldiMota" value="joanEtorri" id="joanEtorri"> <label
-                                for="joanEtorri" class="textua" onclick="formularioakIkusi('joanEtorri')">Joan / Etorri</label>
+                                for="joanEtorri" class="textua" onclick="formularioakIkusi('joanEtorri', 'joanEtorria')">Joan / Etorri</label>
                         </div>
                 </div>
                 <div id="subAldakorra">
 
-                    <div class="joan">
+                    <div id="joana">
                         <label for="titulua" class="textua">Hegaldia (joana)</label><br>
                         <label for="jatorrizkoAireportua" class="textua">Jatorrizko Aireportua</label><br>
                         <select name="jatorrizkoAireportua" id="jatorrizkoAireportua">
@@ -120,7 +120,7 @@ session_start();
                                     <option value="">--Aukeratu--</option>
                                     <?php
                                         //DATU BASETIK
-                                        $sql = "select airelinea_kod, izena from iata"; 
+                                        $sql = "select airelinea_kod, izena from airelinea"; 
                                         $result = $conn->query($sql);//exekutatu
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
@@ -143,8 +143,8 @@ session_start();
                                 <input type="number" name="iraupena" id="iraupena">
                     </div>
 
-                    <div>
-                        <div id="joanEtorri">
+                    
+                        <div id="joanEtorria">
                             <label for="titulua" id="textua">Hegaldia (joana)</label><br>
                             <label for="jatorrizkoAireportua" id="textua">Jatorrizko Aireportua</label><br>
                             <select name="jatorrizkoAireportua" id="jatorrizkoAireportua">
@@ -161,20 +161,30 @@ session_start();
                                         ?>
                                 </select>
                                 <br><br>
-                                <label for=" helmugakoAireportua" id="textua">Helmugako Aireportua</label><br>
-                                <select name="helmugakoAireportua" id="helmugakoAireportua">
+                                <label for=" helmugakoAireportua2" id="textua">Helmugako Aireportua</label><br>
+                                <select name="helmugakoAireportua2" id="helmugakoAireportua2">
                                     <option value="">--Aukeratu--</option>
+                                    <?php
+                                        //DATU BASETIK
+                                        $sql = "select iata_kod, hiria from iata"; 
+                                        $result = $conn->query($sql);//exekutatu
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['iata_kod'] . "'>" . $row['hiria'] . "</option>";
+                                            }
+                                        }
+                                        ?>
                                 </select>
                                 <br><br>
                                 <label for=" hegaldiKodea" id="textua">Hegaldi Kodea:</label><br>
                                     <input type="text" name="hegaldiKodea" id="hegaldiKodea">
                                     <br><br>
-                                    <label for="airelinea" id="textua">Airelinea:</label><br>
-                                    <select name="airelinea" id="airelinea">
+                                    <label for="airelinea2" id="textua">Airelinea:</label><br>
+                                    <select name="airelinea2" id="airelinea2">
                                         <option value="">--Aukeratu--</option>
                                         <?php
                                         //DATU BASETIK
-                                        $sql = "select airelinea_kod, izena from iata"; 
+                                        $sql = "select airelinea_kod, izena from airelinea"; 
                                         $result = $conn->query($sql);//exekutatu
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
@@ -211,8 +221,8 @@ session_start();
                                         ?>
                                 </select>
                                 <br><br>
-                                <label for=" helmugakoAireportua" id="textua">Helmugako Aireportua</label><br>
-                                        <select name="helmugakoAireportua" id="helmugakoAireportua">
+                                <label for=" helmugakoAireportua3" id="textua">Helmugako Aireportua</label><br>
+                                        <select name="helmugakoAireportua3" id="helmugakoAireportua3">
                                     <option value="">--Aukeratu--</option>
                                      <?php
                                         //DATU BASETIK
@@ -229,12 +239,12 @@ session_start();
                                 <label for="hegaldiKodea" id="textua">Hegaldi Kodea:</label><br>
                                             <input type="text" name="hegaldiKodea" id="hegaldiKodea">
                                             <br><br>
-                                            <label for="airelinea" id="textua">Airelinea:</label><br>
-                                            <select name="airelinea" id="airelinea">
+                                            <label for="airelinea3" id="textua">Airelinea:</label><br>
+                                            <select name="airelinea3" id="airelinea3">
                                                 <option value="">--Aukeratu--</option>
                                                 <?php
                                         //DATU BASETIK
-                                        $sql = "select airelinea_kod, izena from iata"; 
+                                        $sql = "select airelinea_kod, izena from airelinea"; 
                                         $result = $conn->query($sql);//exekutatu
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
@@ -276,7 +286,7 @@ session_start();
                                                 <option value="">--Aukeratu--</option>
                                                 <?php
                                         //DATU BASETIK
-                                        $sql = "select airelinea_kod, izena from iata"; 
+                                        $sql = "select airelinea_kod, izena from airelinea"; 
                                         $result = $conn->query($sql);//exekutatu
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
@@ -286,8 +296,10 @@ session_start();
                                         ?>
                                             </select>
                         </div>
-                    </div>
-                    <div id="ostatua">
+                    
+                </div>
+                        
+                <div id="ostatu">
                         <label for="hotelIzena">Hotelaren izena:</label><br>
                         <input type="text" name="hizena" id="hizena">
                         <br><br>
@@ -304,7 +316,7 @@ session_start();
                         <input type="date" name="irteera" id="irteera">
                         <br><br>
                         <label for="logelaMota">Logela Mota:</label><br>
-                        <select name="logela" id="logela">
+                        <select name="logelaMota" id="logelaMota">
                             <option value="">--Aukeratu--</option>
                             <?php
                                         //DATU BASETIK
@@ -312,13 +324,13 @@ session_start();
                                         $result = $conn->query($sql);//exekutatu
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
-                                                echo "<option value='" . $row['logela_mota_kod'] . "'>" . $row['desk '] . "</option>";
+                                                echo "<option value='" . $row['logela_mota_kod'] . "'>" . $row['desk'] . "</option>";
                                             }
                                         }
                                         ?>
                         </select>
-                    </div>
-                    <div id="besteBatzuk">
+            </div>
+                    <div id="besteBatzu">
                         <label for="izena" id="textua">Izena:</label><br>
                         <input type="text" name="bbizena" id="bbizena">
                         <br><br>
@@ -330,12 +342,12 @@ session_start();
                         <br><br>
                         <label for="prezioa" id="textua">Prezioa (€):</label><br>
                         <input type="number" name="prezioa" id="prezioa">
-                    </div>
+                </div>
                     <br><br>
-                    <input type="submit" name="gorde" id="gorde" value="Gorde">
             </form>
         </main>
     </div>
+    <input type="submit" name="gorde" id="gorde" value="Gorde">
         <footer>
             <div id="iformazioa">
                 <h3>Informazioa</h3>
@@ -376,7 +388,20 @@ session_start();
             </div>
         </footer>
     </div>
-    <script src="../js/prueba.js"></script>
+    <script>
+        function formularioakIkusi(hasieraId, formularioaId) {
+    let hasiera = document.getElementById(hasieraId);
+    let formularioa = document.getElementById(formularioaId);
+    console.log(hasiera);
+    console.log(formularioa);
+        if (hasiera.checked) {
+            alert("hartu");
+            formularioa.style.display = "block";
+        } /*else {
+            formularioa.style.display = "none";
+        }*/
+    }
+    </script>
     <?php $conn->close(); ?>
 </body>
 
