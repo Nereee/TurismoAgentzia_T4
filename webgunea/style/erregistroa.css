@@ -28,6 +28,11 @@
     display: none;
 }
 
-#aldakorra, #subAldakorra{
-    display: none;
+#aldakorra div{
+    display: flex;
+    flex-direction: row;
+}
+
+#aldakorra, #joana, #joanEtorria, #ostatu, #besteBatzu{
+    display: none ;
 }

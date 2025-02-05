@@ -1,5 +1,4 @@
-function bidaibal(event){
-    event.preventDefault();
+function bidaibal(){
     let izena = document.getElementById("izena").value.trim();
     let bidaiamota = document.getElementById("bidaiaMota").value.trim();
     let hasieraData = document.getElementById("hasieraData").value.trim();
@@ -13,22 +12,10 @@ function bidaibal(event){
     if (!izena || !bidaiamota || !hasieraData || !amaieraData || !egunak || !herrialdea || !deskribapena || !kanpokoZerbitzuak) {
         alert("Mesedez bete ezazu hutsune guztiak");
         return;
-    }
-
-    if(!hasieraData || !amaieraData){
-        alert("Mesedez bete ezazu hutsune guztiak");
-        return;
-    }else if(hasieraData>amaieraData){
-        alert("Erroera, amaiera data hasiera data baino handiagoa izan behar da")
-        return;
     }else{
-        egunak=hasieraData-amaieraData;
+        erakutsiTaula();
     }
 
-    if (!egunak || egunak <= 0) {
-        alert("Mesedez, ziurtatu datak zuzenak direla");
-        return;
-    }
 }
 function gaurkoData(){
     // Obtener la fecha de hoy en formato YYYY-MM-DD
