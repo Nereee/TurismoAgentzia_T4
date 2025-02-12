@@ -5,13 +5,11 @@ require 'conexioa.php';
 $nombre = htmlspecialchars(trim($_POST['erabiltzailea']));
 $pasahitza = htmlspecialchars(trim($_POST['pasahitza']));
 
-$sql = "SELECT  Desk, Logoa FROM agentzia WHERE Erabiltzailea = '$nombre' and Pasahitza = '$pasahitza'";
+$sql = "SELECT Erabiltzailea, Pasahitza FROM agentzia WHERE Erabiltzailea = '$nombre' and Pasahitza = '$pasahitza'";
 $result = $conn->query($sql);//exekutatu
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
-        $_SESSION['Desk'] = $user['Desk'];
-        $_SESSION['Logoa'] = $user['Logoa'];
         $_SESSION['erabiltzailea'] = $nombre;
         
         header("Location: login2.php");
@@ -45,9 +43,7 @@ $conn->close();
             <nav>
                 <ul>
                     <li><a href="index.html">Hasiera</a></li>
-                    <li><a href="">Agentziak</a></li>
                     <li><a href="aboutus.html">Nortzuk gara?</a></li>
-                    <li><a href="">Helmugak</a></li>
                     <li id="hasiSaioa"><button><a href="login.html">Hasi saioa</a></button></li>
                 </ul> 
             </nav>
@@ -58,13 +54,13 @@ $conn->close();
             <div id="iformazioa">
                 <h3>Informazioa</h3>
                 <p>
-                    <span>Helbidea:</span> Somera kalea, 45 48001 Bilbao, Bizkaia, Espainia
+                    <strong>Helbidea:</strong> Somera kalea, 45 48001 Bilbao, Bizkaia, Espainia
                     <br>    
-                    <span>Telefonoa:</span> +34 944 123 456
+                    <strong>Telefonoa:</strong> +34 944 123 456
                     <br>
-                    <span>Helbide elektronikoa:</span> contacto@bilboviajes.com
+                    <strong>Helbide elektronikoa:</strong> contacto@bilboviajes.com
                     <br>
-                    <span>Ordutegia:</span> Astelehenetik ostiralera: 09:00 - 18:00 Larunbatetan: 10:00 - 14:00
+                    <strong>Ordutegia:</strong> Astelehenetik ostiralera: 09:00 - 18:00 Larunbatetan: 10:00 - 14:00
                 </p>
             </div>
             <div id="sareak">

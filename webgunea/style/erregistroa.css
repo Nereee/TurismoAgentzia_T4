@@ -18,8 +18,8 @@
 }
 
 #bueltatu{
-    width: 20%;
     height: 40px;
+    width: auto;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     background-color: rgb(255, 228, 196, 0.9);
@@ -28,11 +28,69 @@
     display: none;
 }
 
-#aldakorra div{
-    display: flex;
-    flex-direction: row;
-}
-
 #aldakorra, #joana, #joanEtorria, #ostatu, #besteBatzu{
     display: none ;
 }
+
+#taula1, #taula2, #taula3, #taula4 {
+    color: rgb(95, 67, 34);
+ display:none;
+ border-radius: 10px;
+ border:2px rgb(95, 67, 34) solid;
+ margin: 20px;
+}
+
+#taula1 tr, #taula2 tr, #taula3 tr, #taul4 tr {
+    border: 2px rgb(231, 179, 115) solid;
+    padding: 50vw;
+}
+#taula1 th, #taula2 th, #taula3 th, #taula4 th{
+    color: white;
+    text-transform: uppercase;
+    background-color:rgb(95, 67, 34);
+    margin: 50%;
+}
+#ikusi1, #ikusi2, #ikusi3, #ikusi4{
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    background-color: rgb(255, 228, 196, 0.9);
+    border-style: hidden;
+    border-radius: 10px;
+}
+
+#gorde1{
+    width:auto ;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    background-color: rgb(255, 228, 196, 0.9);
+    border-style: hidden;
+    border-radius: 10px;
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .zerbitzuMota{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #aldakorra {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .zerbitzuMota div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #aldakorra div {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+
