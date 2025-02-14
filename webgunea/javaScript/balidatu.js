@@ -1,5 +1,4 @@
-function bidaibal(event){
-    event.preventDefault();
+function bidaibal(){
     let izena = document.getElementById("izena").value.trim();
     let bidaiamota = document.getElementById("bidaiaMota").value.trim();
     let hasieraData = document.getElementById("hasieraData").value.trim();
@@ -13,41 +12,28 @@ function bidaibal(event){
     if (!izena || !bidaiamota || !hasieraData || !amaieraData || !egunak || !herrialdea || !deskribapena || !kanpokoZerbitzuak) {
         alert("Mesedez bete ezazu hutsune guztiak");
         return;
-    }
-
-    if(!hasieraData || !amaieraData){
-        alert("Mesedez bete ezazu hutsune guztiak");
-        return;
-    }else if(hasieraData>amaieraData){
-        alert("Erroera, amaiera data hasiera data baino handiagoa izan behar da")
-        return;
     }else{
-        egunak=hasieraData-amaieraData;
+        erakutsiTaula();
     }
 
-    if (!egunak || egunak <= 0) {
-        alert("Mesedez, ziurtatu datak zuzenak direla");
-        return;
-    }
 }
-function gaurkoData(){
+function gaurkoData(Data){
     // Obtener la fecha de hoy en formato YYYY-MM-DD
     let gaur = new Date();
     let urtea = gaur.getFullYear();
-    let hilea = String(gaur.getMonth() + 1).padStart(2, '0'); // Meses empiezan en 0
-    let eguna = String(gaur.getDate()).padStart(2, '0');
+    let hilea = String(gaur.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0
+    let eguna = String(gaur.getDate()).padStart(2, '0'); // El día debe tener dos dígitos
 
-    let Minimoa = `${urtea}-${hilea}-${eguna}`;
+    let Minimoa = `${urtea}-${hilea}-${eguna}`; // Crear el formato de fecha
 
     // Asignar la fecha mínima al input
-    document.getElementById("hasieraData").setAttribute("min", Minimoa);
-    document.getElementById("amaieraData").setAttribute("min", Minimoa);
-            }
+    document.getElementById(Data).setAttribute("min", Minimoa);
+}
 
-    function egunaKalkulatu(){
+    function egunaKalkulatu(hasiData, amaiData){
 
-        let hasieraData = document.getElementById("hasieraData").value;
-        let amaieraData = document.getElementById("amaieraData").value;
+        let hasieraData = document.getElementById(hasiData).value;
+        let amaieraData = document.getElementById(amaiData).value;
 
         if(!hasieraData || !amaieraData){
         alert("Mesedez bete ezazu hutsune guztiak");
@@ -90,7 +76,14 @@ function erakutsiTaula() {
          document.querySelector("#bueltatu").style.display = "block";
  }
 
- function bueltatu(){
-    window.location.href = '../index.html';
- }
-    
+ function Php(event){
+    event.preventDefault();
+
+    let formularioa=document.getElementById("erregistroBidai");
+
+    let url = "../php/datuakGordeB.php";
+
+    formularioa.action = url;
+    formularioa.submit();
+}
+

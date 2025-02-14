@@ -24,9 +24,7 @@ session_start();
             <nav>
                 <ul>
                     <li><a href="../index.html">Hasiera</a></li>
-                    <li><a href="">Agentziak</a></li>
                     <li><a href="../aboutus.html">Nortzuk gara?</a></li>
-                    <li><a href="">Helmugak</a></li>
                     <li id="hasiSaioa"><button><a href="../login.html">Hasi saioa</a></button></li>
                 </ul> 
             </nav>
@@ -42,7 +40,7 @@ session_start();
             ,aukeratu erregistro mota </p>
 
         <nav>
-    <ul>
+    <ul id="erregistroak">
         <li><a href="bidai_erregistroa.php">Bidaiak erregistratu</a></li>
         <li><a href="zerbitzu_erregistroa.php">Zerbitzuak erregistratu</a></li>
     </ul>
@@ -53,13 +51,13 @@ session_start();
             <div id="iformazioa">
                 <h3>Informazioa</h3>
                 <p>
-                    <span>Helbidea:</span> Somera kalea, 45 48001 Bilbao, Bizkaia, Espainia
+                    <strong>Helbidea:</strong> Somera kalea, 45 48001 Bilbao, Bizkaia, Espainia
                     <br>    
-                    <span>Telefonoa:</span> +34 944 123 456
+                    <strong>Telefonoa:</strong> +34 944 123 456
                     <br>
-                    <span>Helbide elektronikoa:</span> contacto@bilboviajes.com
+                    <strong>Helbide elektronikoa:</strong> contacto@bilboviajes.com
                     <br>
-                    <span>Ordutegia:</span> Astelehenetik ostiralera: 09:00 - 18:00 Larunbatetan: 10:00 - 14:00
+                    <strong>Ordutegia:</strong> Astelehenetik ostiralera: 09:00 - 18:00 Larunbatetan: 10:00 - 14:00
                 </p>
             </div>
             <div id="sareak">

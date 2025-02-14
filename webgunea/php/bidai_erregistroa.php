@@ -16,7 +16,6 @@ session_start();
     <script defer src="../javaScript/bola.js"></script>
     <script defer src="../javaScript/atzekoPlanoa.js"></script>
     <script defer src="../javaScript/balidatu.js"></script>
-    <script defer src="../javaScript/bidai_erregistroa.js"></script>
 </head>
 <body>
     <div id="container">
@@ -26,9 +25,7 @@ session_start();
             <nav>
                 <ul>
                     <li><a href="../index.html">Hasiera</a></li>
-                    <li><a href="">Agentziak</a></li>
                     <li><a href="../aboutus.html">Nortzuk gara?</a></li>
-                    <li><a href="">Helmugak</a></li>
                     <li><a href="#">Bidaiak erregistratu</a></li>
                     <li><a href="zerbitzu_erregistroa.php">Zerbitzuak erregistratu</a></li>
                     <li id="itxiSaioa"><button><a href="../index.html">Itxi saioa</a></button></li>
@@ -36,8 +33,8 @@ session_start();
             </nav>
         </header>
         <main>
-        <form action="#" method="post">
-                <label for="izena" id="textua">Izena:</label><br>
+        <form action="#" id="erregistroBidai" method="post">
+                <label for="izena"  id="textua">Izena:</label><br>
                 <input type="text" name="izena" id="izena" required>
                 <br><br>
                 <label for="bidaiaMota" id="textua">Bidaia Mota</label><br>
@@ -56,13 +53,13 @@ session_start();
                 </select>
                 <br><br>
                 <label for="hasieraData">Hasiera Data:</label><br>
-                <input type="date" id="hasieraData" onclick=gaurkoData() required>
+                <input type="date" id="hasieraData" name="hasieraData" onclick="gaurkoData('hasieraData')" required>
                 <br><br>
                 <label for="amaieraData">Amaiera Data:</label><br>
-                <input type="date" id="amaieraData" required onclick=gaurkoData() onblur=egunaKalkulatu()>
+                <input type="date" id="amaieraData" name="amaieraData" required onclick="gaurkoData('amaieraData')" onblur="egunaKalkulatu('hasieraData', 'amaieraData')">
                 <br><br>
                 <label for="egunak">Egunak:</label><br>
-                <input type="number" id="egunak" readonly>
+                <input type="number" id="egunak" name="egunak" readonly>
                 <br><br>
                 <label for="herrialdea">Herrialdea:</label><br>
                 <select name="herrialdea" id="herrialdea" required>
@@ -85,9 +82,9 @@ session_start();
                 <label for="kanpokoZerbitzuak">Kanpoan geratzen diren zerbitzuak:</label><br>
                 <textarea name="kanpokoZerbitzuak" id="kanpokoZerbitzuak" required></textarea>
                 <br><br>
-                <input type="button" id="gorde" onclick="erakutsiTaula()" onclick="bidaibal()" value="Gorde">
-
+                <input type="button" id="gorde" onclick="bidaibal()" value="Gorde">
             </form>
+            <input type="submit" id="bueltatu" value="Bueltatu" onclick="Php(event)">
             <table id="taula"  >
             <thead> 
                 <tr>
@@ -102,19 +99,18 @@ session_start();
             </thead>
                 <tbody></tbody>
             </table>
-            <input type="button" id="bueltatu" onclick="bueltatu()" value="Bueltatu">
         </main>
         <footer>
             <div id="iformazioa">
                 <h3>Informazioa</h3>
                 <p>
-                    <span>Helbidea:</span> Somera kalea, 45 48001 Bilbao, Bizkaia, Espainia
+                    <strong>Helbidea:</strong> Somera kalea, 45 48001 Bilbao, Bizkaia, Espainia
                     <br>    
-                    <span>Telefonoa:</span> +34 944 123 456
+                    <strong>Telefonoa:</strong> +34 944 123 456
                     <br>
-                    <span>Helbide elektronikoa:</span> contacto@bilboviajes.com
+                    <strong>Helbide elektronikoa:</strong> contacto@bilboviajes.com
                     <br>
-                    <span>Ordutegia:</span> Astelehenetik ostiralera: 09:00 - 18:00 Larunbatetan: 10:00 - 14:00
+                    <strong>Ordutegia:</strong> Astelehenetik ostiralera: 09:00 - 18:00 Larunbatetan: 10:00 - 14:00
                 </p>
             </div>
             <div id="sareak">
@@ -134,6 +130,7 @@ session_start();
         </footer>
     </div>
     <?php $conn->close(); ?>
+
         
 </body>
 </html>

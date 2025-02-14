@@ -84,7 +84,7 @@ form textarea{
 }
 
 #gorde{
-    width: 20%;
+    width:auto ;
     height: 40px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
@@ -170,4 +170,18 @@ nav ul li:hover {
     100% {
         transform: scale(0.9);
     }
+}
+
+@media screen and (max-width: 600px) {
+    #erregistroak {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #erregistroak li {
+        width: 100%; 
+        text-align: center; 
+    }
+
 }

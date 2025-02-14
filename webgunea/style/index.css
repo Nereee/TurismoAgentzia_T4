@@ -21,19 +21,37 @@ main{
 }
 
 
-#edukia span{
-    font-weight: bold;
-}
 
-#helmugak{
+#helmugak {
     width: 90%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    margin: 0 auto; 
+    gap: 20px; 
 }
 
-#helmugak p{
-    width: 70%;
+#htextua {
+    width: 60%; 
 }
+
+#htextua  p {
+    width: 100%;
+    text-align: justify;
+}
+
+#himg{
+    width: 35%;
+    text-align: center;
+}
+
+#himg img {
+    max-width: 100%; 
+    height: auto;
+    border-radius: 10px; 
+}
+
 
 #edukia #helmugak img{
     width: 250px;
@@ -62,7 +80,7 @@ main{
 
 #iritziak div{
     display: flex;
-    align-items: center;    
+    text-align: center;  
 }
 
 #iritziak div img{
@@ -70,3 +88,29 @@ main{
     width: auto;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    #helmugak {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #helmugak p {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #iritziak {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #iritziak div {
+        flex-direction: column;
+        align-items: center;
+    }
+    #iritziak div div {
+        flex-direction: column;
+        align-items: center;
+    }
+  }
